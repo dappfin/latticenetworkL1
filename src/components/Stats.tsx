@@ -15,12 +15,12 @@ export const Stats = () => {
           {stats.map((stat, index) => (
             <div 
               key={index}
-              className="text-center p-6 rounded-xl bg-card/30 backdrop-blur-sm border border-primary/10 hover:border-primary/30 transition-colors"
+              className="text-center p-6 rounded-xl bg-card/40 backdrop-blur-sm border-2 border-primary/20 hover:border-primary/40 transition-colors"
             >
-              <div className="text-4xl md:text-5xl font-bold text-primary mb-2 glow-text">
+              <div className="text-4xl md:text-5xl font-black text-primary mb-2 glow-text">
                 {stat.value}
               </div>
-              <div className="text-sm text-muted-foreground">
+              <div className="text-sm text-foreground/80 font-bold">
                 {stat.label}
               </div>
             </div>

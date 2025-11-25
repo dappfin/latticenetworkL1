@@ -45,11 +45,11 @@ export const QuantumParticles = () => {
 
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(0, 212, 255, 0.6)";
+        ctx.fillStyle = "rgba(0, 169, 204, 0.8)";
         ctx.fill();
 
-        ctx.shadowBlur = 15;
-        ctx.shadowColor = "rgba(0, 212, 255, 0.8)";
+        ctx.shadowBlur = 20;
+        ctx.shadowColor = "rgba(0, 169, 204, 0.9)";
 
         particles.forEach((otherParticle, j) => {
           if (i === j) return;
@@ -61,8 +61,8 @@ export const QuantumParticles = () => {
             ctx.beginPath();
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(otherParticle.x, otherParticle.y);
-            ctx.strokeStyle = `rgba(0, 212, 255, ${0.2 * (1 - distance / 120)})`;
-            ctx.lineWidth = 0.5;
+            ctx.strokeStyle = `rgba(0, 169, 204, ${0.3 * (1 - distance / 120)})`;
+            ctx.lineWidth = 1;
             ctx.stroke();
           }
         });
@@ -87,7 +87,7 @@ export const QuantumParticles = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 pointer-events-none opacity-40"
+      className="absolute inset-0 pointer-events-none opacity-50"
     />
   );
 };
