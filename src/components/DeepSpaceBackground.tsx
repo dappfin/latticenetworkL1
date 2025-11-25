@@ -29,49 +29,49 @@ export const DeepSpaceBackground = () => {
     setCanvasSize();
     window.addEventListener("resize", setCanvasSize);
 
-    // Create multi-layered stars with premium colors
+    // Create multi-layered stars with premium colors - MORE VISIBLE
     const stars: Star[] = [];
-    const starCount = 500;
+    const starCount = 800;
 
-    // Layer 1: Distant stars (small, dim, cyan-white)
-    for (let i = 0; i < starCount * 0.6; i++) {
+    // Layer 1: Distant stars (small but visible, bright cyan-white)
+    for (let i = 0; i < starCount * 0.5; i++) {
       stars.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 1 + 0.3,
+        size: Math.random() * 1.5 + 0.5,
         speed: Math.random() * 0.15 + 0.05,
-        opacity: Math.random() * 0.4 + 0.2,
+        opacity: Math.random() * 0.6 + 0.4,
         twinkleSpeed: Math.random() * 0.015 + 0.005,
         layer: 1,
-        color: `193, 100%, ${85 + Math.random() * 10}%`,
+        color: `193, 100%, ${88 + Math.random() * 7}%`,
       });
     }
 
-    // Layer 2: Mid-range stars (medium, brighter cyan)
-    for (let i = 0; i < starCount * 0.3; i++) {
+    // Layer 2: Mid-range stars (medium, very bright cyan)
+    for (let i = 0; i < starCount * 0.35; i++) {
       stars.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 2 + 1,
+        size: Math.random() * 2.5 + 1.2,
         speed: Math.random() * 0.25 + 0.1,
-        opacity: Math.random() * 0.6 + 0.3,
+        opacity: Math.random() * 0.7 + 0.5,
         twinkleSpeed: Math.random() * 0.02 + 0.01,
         layer: 2,
-        color: `193, 100%, ${70 + Math.random() * 15}%`,
+        color: `193, 100%, ${75 + Math.random() * 15}%`,
       });
     }
 
-    // Layer 3: Close premium stars (large, glowing, brilliant cyan)
-    for (let i = 0; i < starCount * 0.1; i++) {
+    // Layer 3: Close premium stars (large, brilliant glowing cyan)
+    for (let i = 0; i < starCount * 0.15; i++) {
       stars.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 3 + 1.5,
+        size: Math.random() * 4 + 2,
         speed: Math.random() * 0.35 + 0.15,
-        opacity: Math.random() * 0.8 + 0.4,
+        opacity: Math.random() * 0.9 + 0.5,
         twinkleSpeed: Math.random() * 0.025 + 0.015,
         layer: 3,
-        color: `193, 100%, ${60 + Math.random() * 20}%`,
+        color: `193, 100%, ${65 + Math.random() * 25}%`,
       });
     }
 
@@ -82,47 +82,60 @@ export const DeepSpaceBackground = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       time += 0.01;
 
-      // Draw stars by layer for proper depth
+      // Draw stars by layer for proper depth - BRIGHTER & MORE VISIBLE
       stars.forEach((star) => {
-        const twinkle = Math.sin(time * star.twinkleSpeed * 10) * 0.35 + 0.65;
+        const twinkle = Math.sin(time * star.twinkleSpeed * 10) * 0.4 + 0.6;
         const finalOpacity = star.opacity * twinkle;
 
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
         
-        // Premium glow effects based on layer
+        // Premium glow effects based on layer - ENHANCED VISIBILITY
         if (star.layer === 3) {
-          // Close stars - dramatic glow
+          // Close stars - ULTRA dramatic glow
           const gradient = ctx.createRadialGradient(
             star.x, star.y, 0,
-            star.x, star.y, star.size * 6
+            star.x, star.y, star.size * 8
           );
-          gradient.addColorStop(0, `hsla(${star.color}, ${finalOpacity})`);
-          gradient.addColorStop(0.3, `hsla(${star.color}, ${finalOpacity * 0.6})`);
-          gradient.addColorStop(0.6, `hsla(193, 100%, 50%, ${finalOpacity * 0.25})`);
+          gradient.addColorStop(0, `hsla(193, 100%, 95%, ${finalOpacity})`);
+          gradient.addColorStop(0.2, `hsla(${star.color}, ${finalOpacity * 0.8})`);
+          gradient.addColorStop(0.5, `hsla(193, 100%, 60%, ${finalOpacity * 0.4})`);
           gradient.addColorStop(1, "transparent");
           ctx.fillStyle = gradient;
           ctx.fill();
           
-          // Core bright spot
+          // Bright core with cross flare
           ctx.beginPath();
-          ctx.arc(star.x, star.y, star.size * 0.4, 0, Math.PI * 2);
-          ctx.fillStyle = `hsla(193, 100%, 95%, ${finalOpacity * 0.9})`;
+          ctx.arc(star.x, star.y, star.size * 0.5, 0, Math.PI * 2);
+          ctx.fillStyle = `hsla(193, 100%, 98%, ${finalOpacity})`;
           ctx.fill();
         } else if (star.layer === 2) {
-          // Mid stars - medium glow
+          // Mid stars - BRIGHT glow
           const gradient = ctx.createRadialGradient(
             star.x, star.y, 0,
-            star.x, star.y, star.size * 4
+            star.x, star.y, star.size * 5
           );
-          gradient.addColorStop(0, `hsla(${star.color}, ${finalOpacity})`);
-          gradient.addColorStop(0.5, `hsla(${star.color}, ${finalOpacity * 0.4})`);
+          gradient.addColorStop(0, `hsla(193, 100%, 90%, ${finalOpacity})`);
+          gradient.addColorStop(0.4, `hsla(${star.color}, ${finalOpacity * 0.6})`);
           gradient.addColorStop(1, "transparent");
           ctx.fillStyle = gradient;
           ctx.fill();
+          
+          // Bright center
+          ctx.beginPath();
+          ctx.arc(star.x, star.y, star.size * 0.3, 0, Math.PI * 2);
+          ctx.fillStyle = `hsla(193, 100%, 95%, ${finalOpacity})`;
+          ctx.fill();
         } else {
-          // Distant stars - subtle
-          ctx.fillStyle = `hsla(${star.color}, ${finalOpacity})`;
+          // Distant stars - MORE VISIBLE
+          const gradient = ctx.createRadialGradient(
+            star.x, star.y, 0,
+            star.x, star.y, star.size * 2.5
+          );
+          gradient.addColorStop(0, `hsla(${star.color}, ${finalOpacity})`);
+          gradient.addColorStop(0.7, `hsla(${star.color}, ${finalOpacity * 0.3})`);
+          gradient.addColorStop(1, "transparent");
+          ctx.fillStyle = gradient;
           ctx.fill();
         }
 
@@ -147,64 +160,64 @@ export const DeepSpaceBackground = () => {
 
   return (
     <>
-      {/* Deep space base with vignette */}
+      {/* Deep space base - darker for contrast */}
       <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(225,71%,5%)] via-space-deep to-[hsl(225,71%,6%)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(225,80%,4%)] via-[hsl(225,75%,3%)] to-[hsl(225,80%,4%)]" />
         
-        {/* Dramatic vignette */}
-        <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-black/60" />
-        
-        {/* Premium nebula clouds - ultra dramatic */}
-        <div className="absolute -top-[20%] -left-[10%] w-[1200px] h-[1200px] opacity-40">
-          <div className="w-full h-full bg-gradient-radial from-primary/50 via-primary/20 via-30% to-transparent blur-[100px] animate-float" />
+        {/* Premium nebula clouds - MORE VISIBLE & DRAMATIC */}
+        <div className="absolute -top-[15%] -left-[5%] w-[1400px] h-[1400px] opacity-50">
+          <div className="w-full h-full bg-gradient-radial from-primary/60 via-primary/30 via-25% to-transparent blur-[120px] animate-float" />
         </div>
         
-        <div className="absolute top-[20%] -right-[10%] w-[1000px] h-[1000px] opacity-35">
-          <div className="w-full h-full bg-gradient-radial from-accent/60 via-accent/25 via-30% to-transparent blur-[100px] animate-float" 
+        <div className="absolute top-[15%] -right-[5%] w-[1200px] h-[1200px] opacity-45">
+          <div className="w-full h-full bg-gradient-radial from-accent/70 via-accent/35 via-25% to-transparent blur-[120px] animate-float" 
                style={{ animationDelay: "-4s", animationDuration: "10s" }} />
         </div>
         
-        <div className="absolute top-[60%] left-[10%] w-[900px] h-[900px] opacity-30">
-          <div className="w-full h-full bg-gradient-radial from-primary/45 via-primary/20 via-30% to-transparent blur-[100px] animate-float"
+        <div className="absolute top-[55%] left-[5%] w-[1100px] h-[1100px] opacity-40">
+          <div className="w-full h-full bg-gradient-radial from-primary/55 via-primary/28 via-25% to-transparent blur-[120px] animate-float"
                style={{ animationDelay: "-7s", animationDuration: "12s" }} />
         </div>
         
-        <div className="absolute bottom-[10%] right-[20%] w-[800px] h-[800px] opacity-25">
-          <div className="w-full h-full bg-gradient-radial from-accent/50 via-accent/18 via-35% to-transparent blur-[100px] animate-float"
+        <div className="absolute bottom-[5%] right-[15%] w-[1000px] h-[1000px] opacity-38">
+          <div className="w-full h-full bg-gradient-radial from-accent/65 via-accent/30 via-28% to-transparent blur-[120px] animate-float"
                style={{ animationDelay: "-2s", animationDuration: "14s" }} />
         </div>
 
-        {/* Cosmic dust layers */}
-        <div className="absolute inset-0 opacity-20"
+        {/* Additional accent nebula for depth */}
+        <div className="absolute top-[40%] left-[40%] w-[900px] h-[900px] opacity-35">
+          <div className="w-full h-full bg-gradient-radial from-primary/50 via-primary/22 via-30% to-transparent blur-[100px] animate-float"
+               style={{ animationDelay: "-10s", animationDuration: "16s" }} />
+        </div>
+
+        {/* Cosmic dust layers - ENHANCED */}
+        <div className="absolute inset-0 opacity-30"
              style={{
-               backgroundImage: "radial-gradient(circle at 20% 30%, hsl(193 100% 50% / 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 70%, hsl(193 100% 60% / 0.1) 0%, transparent 50%)",
+               backgroundImage: "radial-gradient(circle at 20% 30%, hsl(193 100% 50% / 0.2) 0%, transparent 45%), radial-gradient(circle at 80% 70%, hsl(193 100% 60% / 0.15) 0%, transparent 45%), radial-gradient(circle at 50% 50%, hsl(193 100% 55% / 0.12) 0%, transparent 50%)",
              }} />
 
-        {/* Premium scan lines */}
-        <div className="absolute inset-0 opacity-[0.04]"
-             style={{
-               backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 2px, hsl(193 100% 50%) 2px, hsl(193 100% 50%) 3px)",
-             }} />
-        
-        {/* Subtle grid overlay for tech premium feel */}
-        <div className="absolute inset-0 opacity-[0.02]"
+        {/* Premium tech grid - MORE VISIBLE */}
+        <div className="absolute inset-0 opacity-[0.035]"
              style={{
                backgroundImage: `
                  linear-gradient(90deg, hsl(193 100% 50%) 1px, transparent 1px),
                  linear-gradient(0deg, hsl(193 100% 50%) 1px, transparent 1px)
                `,
-               backgroundSize: "100px 100px",
+               backgroundSize: "80px 80px",
              }} />
 
-        {/* Atmospheric glow at edges */}
-        <div className="absolute top-0 inset-x-0 h-[300px] bg-gradient-to-b from-primary/10 to-transparent" />
-        <div className="absolute bottom-0 inset-x-0 h-[300px] bg-gradient-to-t from-primary/10 to-transparent" />
+        {/* Atmospheric glow - BRIGHTER */}
+        <div className="absolute top-0 inset-x-0 h-[400px] bg-gradient-to-b from-primary/15 via-primary/8 to-transparent" />
+        <div className="absolute bottom-0 inset-x-0 h-[400px] bg-gradient-to-t from-primary/15 via-primary/8 to-transparent" />
+        
+        {/* Subtle vignette - not too dark */}
+        <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent via-60% to-black/40" />
       </div>
 
-      {/* Premium star field canvas */}
+      {/* Premium star field canvas - FULL OPACITY */}
       <canvas
         ref={canvasRef}
-        className="fixed top-0 left-0 pointer-events-none opacity-90"
+        className="fixed top-0 left-0 pointer-events-none"
         style={{ zIndex: 1 }}
       />
     </>
