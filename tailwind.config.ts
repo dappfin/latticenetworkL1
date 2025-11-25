@@ -53,6 +53,9 @@ export default {
         "space-mid": "hsl(var(--space-mid))",
         "quantum-blue": "hsl(var(--quantum-blue))",
       },
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
