@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import auroraBg from "@/assets/aurora-space-bg.jpg";
 
 interface Star {
   x: number;
@@ -160,9 +161,18 @@ export const DeepSpaceBackground = () => {
 
   return (
     <>
-      {/* Deep space base - darker for contrast */}
+      {/* Aurora space background image */}
+      <div 
+        className="fixed inset-0 pointer-events-none bg-cover bg-center bg-no-repeat"
+        style={{ 
+          backgroundImage: `url(${auroraBg})`,
+          opacity: 0.75
+        }}
+      />
+      
+      {/* Deep space overlay for blending */}
       <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(225,80%,4%)] via-[hsl(225,75%,3%)] to-[hsl(225,80%,4%)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(225,80%,4%)]/60 via-[hsl(225,75%,3%)]/40 to-[hsl(225,80%,4%)]/60" />
         
         {/* Premium nebula clouds - MORE VISIBLE & DRAMATIC */}
         <div className="absolute -top-[15%] -left-[5%] w-[1400px] h-[1400px] opacity-50">
