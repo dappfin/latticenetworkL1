@@ -1,6 +1,7 @@
 import { Hero } from "@/components/Hero";
 import { Features } from "@/components/Features";
 import { Architecture } from "@/components/Architecture";
+import { Authentication } from "@/components/Authentication";
 import { Stats } from "@/components/Stats";
 import { Waitlist } from "@/components/Waitlist";
 import { TestnetExplorer } from "@/components/TestnetExplorer";
@@ -23,6 +24,9 @@ const Index = () => {
         </div>
         <div id="architecture">
           <Architecture />
+        </div>
+        <div id="authentication">
+          <Authentication />
         </div>
         <div id="waitlist">
           <Waitlist />
