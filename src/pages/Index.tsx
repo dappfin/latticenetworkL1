@@ -1,5 +1,6 @@
 import { Hero } from "@/components/Hero";
 import { Features } from "@/components/Features";
+import { Architecture } from "@/components/Architecture";
 import { Stats } from "@/components/Stats";
 import { Waitlist } from "@/components/Waitlist";
 import { TestnetExplorer } from "@/components/TestnetExplorer";
@@ -19,6 +20,9 @@ const Index = () => {
         <Stats />
         <div id="features">
           <Features />
+        </div>
+        <div id="architecture">
+          <Architecture />
         </div>
         <div id="waitlist">
           <Waitlist />
