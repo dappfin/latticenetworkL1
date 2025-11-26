@@ -1,11 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Network } from "lucide-react";
-import { QuantumParticles } from "./QuantumParticles";
 
 export const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <QuantumParticles />
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-5xl mx-auto text-center space-y-8">
