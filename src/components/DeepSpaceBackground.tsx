@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import auroraBg from "@/assets/aurora-space-bg.jpg";
+import mysticSpaceBg from "@/assets/mystic-space-bg.jpg";
 
 interface Star {
   x: number;
@@ -161,12 +161,12 @@ export const DeepSpaceBackground = () => {
 
   return (
     <>
-      {/* Aurora space background image */}
+      {/* Mystic space background image */}
       <div 
         className="fixed inset-0 pointer-events-none bg-cover bg-center bg-no-repeat"
         style={{ 
-          backgroundImage: `url(${auroraBg})`,
-          opacity: 0.75
+          backgroundImage: `url(${mysticSpaceBg})`,
+          opacity: 0.8
         }}
       />
       
