@@ -161,67 +161,26 @@ export const DeepSpaceBackground = () => {
 
   return (
     <>
-      {/* Mystic space background image */}
+      {/* Mystic space background image - MORE VISIBLE */}
       <div 
         className="fixed inset-0 pointer-events-none bg-cover bg-center bg-no-repeat"
         style={{ 
           backgroundImage: `url(${mysticSpaceBg})`,
-          opacity: 0.8
+          opacity: 1
         }}
       />
       
-      {/* Deep space overlay for blending */}
+      {/* Light overlay for subtle blending only */}
       <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(225,80%,4%)]/60 via-[hsl(225,75%,3%)]/40 to-[hsl(225,80%,4%)]/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(225,80%,4%)]/20 via-transparent to-[hsl(225,80%,4%)]/20" />
         
-        {/* Premium nebula clouds - MORE VISIBLE & DRAMATIC */}
-        <div className="absolute -top-[15%] -left-[5%] w-[1400px] h-[1400px] opacity-50">
-          <div className="w-full h-full bg-gradient-radial from-primary/60 via-primary/30 via-25% to-transparent blur-[120px] animate-float" />
-        </div>
-        
-        <div className="absolute top-[15%] -right-[5%] w-[1200px] h-[1200px] opacity-45">
-          <div className="w-full h-full bg-gradient-radial from-accent/70 via-accent/35 via-25% to-transparent blur-[120px] animate-float" 
-               style={{ animationDelay: "-4s", animationDuration: "10s" }} />
-        </div>
-        
-        <div className="absolute top-[55%] left-[5%] w-[1100px] h-[1100px] opacity-40">
-          <div className="w-full h-full bg-gradient-radial from-primary/55 via-primary/28 via-25% to-transparent blur-[120px] animate-float"
-               style={{ animationDelay: "-7s", animationDuration: "12s" }} />
-        </div>
-        
-        <div className="absolute bottom-[5%] right-[15%] w-[1000px] h-[1000px] opacity-38">
-          <div className="w-full h-full bg-gradient-radial from-accent/65 via-accent/30 via-28% to-transparent blur-[120px] animate-float"
-               style={{ animationDelay: "-2s", animationDuration: "14s" }} />
+        {/* Subtle nebula accent - minimal */}
+        <div className="absolute top-[20%] -left-[5%] w-[1000px] h-[1000px] opacity-15">
+          <div className="w-full h-full bg-gradient-radial from-primary/40 via-primary/20 to-transparent blur-[100px] animate-float" />
         </div>
 
-        {/* Additional accent nebula for depth */}
-        <div className="absolute top-[40%] left-[40%] w-[900px] h-[900px] opacity-35">
-          <div className="w-full h-full bg-gradient-radial from-primary/50 via-primary/22 via-30% to-transparent blur-[100px] animate-float"
-               style={{ animationDelay: "-10s", animationDuration: "16s" }} />
-        </div>
-
-        {/* Cosmic dust layers - ENHANCED */}
-        <div className="absolute inset-0 opacity-30"
-             style={{
-               backgroundImage: "radial-gradient(circle at 20% 30%, hsl(193 100% 50% / 0.2) 0%, transparent 45%), radial-gradient(circle at 80% 70%, hsl(193 100% 60% / 0.15) 0%, transparent 45%), radial-gradient(circle at 50% 50%, hsl(193 100% 55% / 0.12) 0%, transparent 50%)",
-             }} />
-
-        {/* Premium tech grid - MORE VISIBLE */}
-        <div className="absolute inset-0 opacity-[0.035]"
-             style={{
-               backgroundImage: `
-                 linear-gradient(90deg, hsl(193 100% 50%) 1px, transparent 1px),
-                 linear-gradient(0deg, hsl(193 100% 50%) 1px, transparent 1px)
-               `,
-               backgroundSize: "80px 80px",
-             }} />
-
-        {/* Atmospheric glow - BRIGHTER */}
-        <div className="absolute top-0 inset-x-0 h-[400px] bg-gradient-to-b from-primary/15 via-primary/8 to-transparent" />
-        <div className="absolute bottom-0 inset-x-0 h-[400px] bg-gradient-to-t from-primary/15 via-primary/8 to-transparent" />
-        
-        {/* Subtle vignette - not too dark */}
-        <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent via-60% to-black/40" />
+        {/* Minimal vignette - just edges */}
+        <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent via-80% to-black/20" />
       </div>
 
       {/* Premium star field canvas - FULL OPACITY */}
