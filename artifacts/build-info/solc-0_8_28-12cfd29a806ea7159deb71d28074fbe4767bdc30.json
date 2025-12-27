@@ -1,0 +1,51 @@
+{
+  "_format": "hh3-sol-build-info-1",
+  "id": "solc-0_8_28-12cfd29a806ea7159deb71d28074fbe4767bdc30",
+  "solcVersion": "0.8.28",
+  "solcLongVersion": "0.8.28+commit.7893614a",
+  "userSourceNameMap": {
+    "contracts/Bridge.sol": "project/contracts/Bridge.sol",
+    "contracts/Counter.sol": "project/contracts/Counter.sol",
+    "contracts/PQVerifier.sol": "project/contracts/PQVerifier.sol",
+    "contracts/Staking.sol": "project/contracts/Staking.sol"
+  },
+  "input": {
+    "language": "Solidity",
+    "settings": {
+      "evmVersion": "cancun",
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "outputSelection": {
+        "*": {
+          "": [
+            "ast"
+          ],
+          "*": [
+            "abi",
+            "evm.bytecode",
+            "evm.deployedBytecode",
+            "evm.methodIdentifiers",
+            "metadata"
+          ]
+        }
+      },
+      "remappings": []
+    },
+    "sources": {
+      "project/contracts/Bridge.sol": {
+        "content": ""
+      },
+      "project/contracts/Counter.sol": {
+        "content": "// SPDX-License-Identifier: UNLICENSED\npragma solidity ^0.8.28;\n\ncontract Counter {\n  uint public x;\n\n  event Increment(uint by);\n\n  function inc() public {\n    x++;\n    emit Increment(1);\n  }\n\n  function incBy(uint by) public {\n    require(by > 0, \"incBy: increment should be positive\");\n    x += by;\n    emit Increment(by);\n  }\n}\n"
+      },
+      "project/contracts/PQVerifier.sol": {
+        "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.20;\n\n/**\n * @title PQVerifier\n * @dev Post-Quantum signature verification contract for Crystals Dilithium\n * @notice Verifies PQ signatures for validator operations\n */\ncontract PQVerifier {\n    // Crystals Dilithium parameters\n    uint256 constant public KYBER_SECURITY_LEVEL = 2;\n    uint256 constant public DILITHIUM_MODE = 2;\n    \n    // Signature verification cache for gas optimization\n    mapping(bytes32 => bool) public verifiedSignatures;\n    mapping(address => uint256) public verificationCounts;\n    \n    event PQSignatureVerified(\n        address indexed validator,\n        bytes32 indexed messageHash,\n        bool verified,\n        uint256 gasUsed\n    );\n    \n    error InvalidSignatureLength();\n    error SignatureVerificationFailed();\n    error InvalidPublicKey();\n    \n    /**\n     * @dev Verify a Crystals Dilithium signature\n     * @param publicKey The validator's PQ public key\n     * @param signature The PQ signature to verify\n     * @param message The message that was signed\n     * @return verified Whether the signature is valid\n     */\n    function verifyPQ(\n        bytes memory publicKey,\n        bytes memory signature,\n        bytes memory message\n    ) public returns (bool verified) {\n        uint256 gasStart = gasleft();\n        \n        // Input validation\n        if (publicKey.length == 0) revert InvalidPublicKey();\n        if (signature.length < 2000) revert InvalidSignatureLength(); // Dilithium signatures are ~2.5KB\n        \n        // Create message hash\n        bytes32 messageHash = keccak256(abi.encodePacked(message));\n        \n        // Check cache first for gas optimization\n        bytes32 cacheKey = keccak256(abi.encodePacked(publicKey, signature, messageHash));\n        if (verifiedSignatures[cacheKey]) {\n            emit PQSignatureVerified(msg.sender, messageHash, true, gasStart - gasleft());\n            return true;\n        }\n        \n        // Perform PQ signature verification\n        verified = _verifyDilithiumSignature(publicKey, signature, messageHash);\n        \n        // Cache the result for future calls\n        if (verified) {\n            verifiedSignatures[cacheKey] = true;\n            verificationCounts[msg.sender]++;\n        }\n        \n        uint256 gasUsed = gasStart - gasleft();\n        emit PQSignatureVerified(msg.sender, messageHash, verified, gasUsed);\n        \n        return verified;\n    }\n    \n    /**\n     * @dev Internal function for Dilithium signature verification\n     * @param publicKey The public key bytes\n     * @param signature The signature bytes\n     * @param messageHash The hash of the message\n     * @return valid Whether the signature is valid\n     */\n    function _verifyDilithiumSignature(\n        bytes memory publicKey,\n        bytes memory signature,\n        bytes32 messageHash\n    ) internal pure returns (bool valid) {\n        // Simplified Dilithium verification for demonstration\n        // In production, this would implement the full Dilithium algorithm\n        \n        // Extract signature components (simplified)\n        uint256 signatureLength = signature.length;\n        require(signatureLength >= 2000, \"Signature too short\");\n        \n        // Extract public key components (simplified)\n        uint256 publicKeyLength = publicKey.length;\n        require(publicKeyLength >= 1312, \"Public key too short\"); // Dilithium2 pubkey size\n        \n        // Simulate verification computation\n        // Real implementation would perform polynomial operations\n        bytes32 computedHash = keccak256(abi.encodePacked(publicKey, signature, messageHash));\n        \n        // Verification check (simplified - real check involves polynomial comparison)\n        return _performPolynomialVerification(publicKey, signature, messageHash, computedHash);\n    }\n    \n    /**\n     * @dev Perform the core polynomial verification\n     * @param publicKey Public key for verification\n     * @param signature Signature to verify\n     * @param messageHash Hash of the signed message\n     * @param computedHash Computed hash for verification\n     * @return valid Whether verification passed\n     */\n    function _performPolynomialVerification(\n        bytes memory publicKey,\n        bytes memory signature,\n        bytes32 messageHash,\n        bytes32 computedHash\n    ) internal pure returns (bool valid) {\n        // Simplified polynomial verification\n        // Real implementation would:\n        // 1. Parse signature into polynomial coefficients\n        // 2. Compute commitment polynomials\n        // 3. Verify against public key\n        // 4. Check bounds and norms\n        \n        // For gas optimization demonstration, we'll use a simplified check\n        bytes32 expectedHash = keccak256(abi.encodePacked(\n            publicKey,\n            signature,\n            messageHash,\n            uint256(0x12345678) // Simulated nonce\n        ));\n        \n        return computedHash == expectedHash;\n    }\n    \n    /**\n     * @dev Batch verification for multiple signatures (gas optimization)\n     * @param publicKeys Array of public keys\n     * @param signatures Array of signatures\n     * @param messages Array of messages\n     * @return results Array of verification results\n     */\n    function verifyBatch(\n        bytes[] memory publicKeys,\n        bytes[] memory signatures,\n        bytes[] memory messages\n    ) public returns (bool[] memory results) {\n        require(\n            publicKeys.length == signatures.length && \n            signatures.length == messages.length,\n            \"Array length mismatch\"\n        );\n        \n        results = new bool[](publicKeys.length);\n        \n        for (uint256 i = 0; i < publicKeys.length; i++) {\n            results[i] = verifyPQ(publicKeys[i], signatures[i], messages[i]);\n        }\n        \n        return results;\n    }\n    \n    /**\n     * @dev Clear verification cache (for maintenance)\n     * @param validator Address to clear cache for\n     */\n    function clearCache(address validator) public {\n        // In production, this would be restricted to admin\n        verificationCounts[validator] = 0;\n    }\n    \n    /**\n     * @dev Get verification statistics for a validator\n     * @param validator Address to query\n     * @return count Number of successful verifications\n     */\n    function getVerificationCount(address validator) public view returns (uint256 count) {\n        return verificationCounts[validator];\n    }\n    \n    /**\n     * @dev Estimate gas cost for verification\n     * @param signatureLength Length of the signature\n     * @return estimatedGas Estimated gas consumption\n     */\n    function estimateVerificationGas(uint256 signatureLength) public pure returns (uint256 estimatedGas) {\n        // Base gas cost\n        uint256 baseGas = 21000;\n        \n        // Gas for signature processing (simplified estimation)\n        uint256 processingGas = signatureLength * 10; // ~10 gas per byte\n        \n        // Gas for hash computations\n        uint256 hashGas = 50000;\n        \n        return baseGas + processingGas + hashGas;\n    }\n}"
+      },
+      "project/contracts/Staking.sol": {
+        "content": ""
+      }
+    }
+  }
+}
