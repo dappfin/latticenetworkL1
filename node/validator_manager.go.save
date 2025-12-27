@@ -1,0 +1,93 @@
+KKKKKKKKKKpackage main
+
+import (
+	"encoding/json"
+	"fmt"
+	"os"
+	"path/filepath"
+)
+
+type PQValidatorKey struct {
+	Name         string `json:"name"`
+	PQPublicKey  string `json:"pq_public_key"`
+	PQPrivateKey string `json:"pq_private_key"`
+}
+
+// Load all validator PQ keys from genesis/keys
+func LoadAllPQValidatorKeys(folder string) (map[string]PQValidatorKey, error) {
+	keys := make(map[string]PQValidatorKey)
+
+	entries, err := os.ReadDir(folder)
+	if err != nil {
+		return nil, fmt.Errorf("cannot read pq key dir: %w", err)
+	}
+
+	for _, e := range entries {
+		if e.IsDir() {
+			continue
+		}
+
+		data, err := os.ReadFile(filepath.Join(folder, e.Name()))
+		if err != nil {
+			return nil, fmt.Errorf("cannot read key file %s: %w", e.Name(), err)
+		}
+
+		var key PQValidatorKey
+		if err := json.Unmarshal(data, &key); err != nil {
+			return nil, fmt.Errorf("invalid key file %s: %w", e.Name(), err)
+		}
+
+		if key.Name == "" || key.PQPublicKey == "" {
+			return nil, fmt.Errorf("key file %s missing required fields", e.Name())
+		}
+
+		keys[key.Name] = key
+		fmt.Printf("Loaded PQ key for %s\n", key.Name)
+	}
+
+	return keys, nil
+}
+
+// Verify PQ public keys against expected hashes from genesis
+func VerifyPQKeysAgainstGenesis(
+	expected map[string]string,
+	keys map[string]PQValidatorKey,
+) error {
+
+	for validatorName, expectedHash := range expected {
+
+		key, ok := keys[validatorName]
+		if !ok {
+			return fmt.Errorf("missing pq key for genesis validator %s", validatorName)
+		}
+
+		actualHash := HashPQPublicKey(key.PQPublicKey)
+		if actualHash != expectedHash {
+			return fmt.Errorf(
+				"pq key mismatch for %s: expected %s got %s",
+				validatorName,
+				expectedHash,
+				actualHash,
+			)
+		}
+
+		fmt.Printf("PQ key verified: %s OK\n", validatorName)
+	}
+
+	// IMPORTANT: extra keys are allowed
+	for name := range keys {
+		if _, ok := expected[name]; !ok {
+			fmt.Printf("PQ key loaded for inactive validator %s (ignored)\n", name)
+		}
+	}
+
+	return nil
+}
+
+// TEMP hash helper — replace with keccak later
+func HashPQPublicKey(pub string) string {
+	if len(pub) < 16 {
+		return pub
+	}
+	return pub[:16]
+}
