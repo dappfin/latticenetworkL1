@@ -14,17 +14,6 @@ interface Transaction {
   timestamp: string;
 }
 
-// Mock data
-const mockTransactions: Transaction[] = Array.from({ length: 20 }, (_, i) => ({
-  hash: `0x${Math.random().toString(16).slice(2, 10)}...${Math.random().toString(16).slice(2, 6)}`,
-  block: 1847293 - Math.floor(i / 2),
-  from: `0x${Math.random().toString(16).slice(2, 10)}...`,
-  to: `0x${Math.random().toString(16).slice(2, 10)}...`,
-  gasUsed: Math.floor(Math.random() * 100000) + 21000,
-  status: Math.random() > 0.1 ? "success" : "failed",
-  timestamp: `${i + 1}s ago`,
-}));
-
 const columns = [
   {
     key: "hash",
@@ -92,9 +81,13 @@ export const Transactions = () => {
         <CardContent>
           <DataTable
             columns={columns}
-            data={mockTransactions}
+            data={[]}
             onRowClick={handleTxClick}
           />
+          <div className="text-center py-8 text-muted-foreground">
+            <ArrowRightLeft className="h-12 w-12 mx-auto mb-4 opacity-50" />
+            <p>No transactions available</p>
+          </div>
         </CardContent>
       </Card>
     </div>

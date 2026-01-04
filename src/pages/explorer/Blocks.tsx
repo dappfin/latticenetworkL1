@@ -1,8 +1,6 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box } from "lucide-react";
 import { DataTable } from "@/components/explorer/DataTable";
-import { StatusBadge } from "@/components/explorer/StatusBadge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface Block {
@@ -11,18 +9,7 @@ interface Block {
   timestamp: string;
   validator: string;
   txCount: number;
-  finality: "soft" | "hard";
 }
-
-// Mock data
-const mockBlocks: Block[] = Array.from({ length: 20 }, (_, i) => ({
-  number: 1847293 - i,
-  hash: `0x${Math.random().toString(16).slice(2, 10)}...${Math.random().toString(16).slice(2, 6)}`,
-  timestamp: `${i * 2 + 2}s ago`,
-  validator: `Validator-${Math.floor(Math.random() * 52) + 1}`,
-  txCount: Math.floor(Math.random() * 50) + 1,
-  finality: i > 5 ? "hard" : "soft",
-}));
 
 const columns = [
   {
@@ -60,11 +47,6 @@ const columns = [
       <span className="text-foreground">{block.txCount}</span>
     ),
   },
-  {
-    key: "finality",
-    header: "Finality",
-    render: (block: Block) => <StatusBadge status={block.finality} />,
-  },
 ];
 
 export const Blocks = () => {
@@ -91,9 +73,13 @@ export const Blocks = () => {
         <CardContent>
           <DataTable
             columns={columns}
-            data={mockBlocks}
+            data={[]}
             onRowClick={handleBlockClick}
           />
+          <div className="text-center py-8 text-muted-foreground">
+            <Box className="h-12 w-12 mx-auto mb-4 opacity-50" />
+            <p>No blocks available</p>
+          </div>
         </CardContent>
       </Card>
     </div>
