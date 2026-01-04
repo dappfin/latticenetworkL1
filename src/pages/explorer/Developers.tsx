@@ -3,36 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExpandableCard } from "@/components/explorer/ExpandableCard";
 
-const rpcEndpoints = [
-  { name: "Primary RPC", url: "https://rpc.lattice.network" },
-  { name: "WebSocket", url: "wss://ws.lattice.network" },
-  { name: "Archive Node", url: "https://archive.lattice.network" },
-];
-
-const supportedMethods = [
-  "eth_blockNumber",
-  "eth_getBalance",
-  "eth_getTransactionByHash",
-  "eth_getTransactionReceipt",
-  "eth_getBlockByNumber",
-  "eth_getBlockByHash",
-  "eth_call",
-  "eth_estimateGas",
-  "eth_gasPrice",
-  "eth_chainId",
-  "eth_getLogs",
-  "eth_getCode",
-  "net_version",
-  "web3_clientVersion",
-];
-
-const rateLimits = {
-  requestsPerSecond: 100,
-  requestsPerDay: 100000,
-  batchLimit: 50,
-};
-
-const exampleCurl = `curl -X POST https://rpc.lattice.network \\
+const exampleCurl = `curl -X POST <RPC_ENDPOINT> \\
   -H "Content-Type: application/json" \\
   -d '{
     "jsonrpc": "2.0",
@@ -62,22 +33,8 @@ export const Developers = () => {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="space-y-3">
-            {rpcEndpoints.map((endpoint, i) => (
-              <div key={i} className="flex items-center justify-between p-3 bg-secondary/30 rounded-lg">
-                <div>
-                  <p className="text-sm font-medium text-foreground">{endpoint.name}</p>
-                  <p className="text-sm font-mono text-muted-foreground">{endpoint.url}</p>
-                </div>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => copyToClipboard(endpoint.url)}
-                >
-                  Copy
-                </Button>
-              </div>
-            ))}
+          <div className="text-sm text-muted-foreground">
+            No endpoints configured
           </div>
         </CardContent>
       </Card>
@@ -94,15 +51,15 @@ export const Developers = () => {
           <div className="grid grid-cols-3 gap-4">
             <div>
               <p className="text-xs text-muted-foreground">Requests/Second</p>
-              <p className="text-lg font-mono text-foreground">{rateLimits.requestsPerSecond}</p>
+              <p className="text-lg font-mono text-foreground">—</p>
             </div>
             <div>
               <p className="text-xs text-muted-foreground">Requests/Day</p>
-              <p className="text-lg font-mono text-foreground">{rateLimits.requestsPerDay.toLocaleString()}</p>
+              <p className="text-lg font-mono text-foreground">—</p>
             </div>
             <div>
               <p className="text-xs text-muted-foreground">Batch Limit</p>
-              <p className="text-lg font-mono text-foreground">{rateLimits.batchLimit}</p>
+              <p className="text-lg font-mono text-foreground">—</p>
             </div>
           </div>
         </CardContent>
@@ -114,20 +71,13 @@ export const Developers = () => {
         icon={<Code className="h-5 w-5 text-primary" />}
         expandLabel="View all methods"
         expandedContent={
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
-            {supportedMethods.map((method, i) => (
-              <span
-                key={i}
-                className="px-2 py-1.5 bg-secondary/50 rounded text-xs font-mono text-foreground"
-              >
-                {method}
-              </span>
-            ))}
+          <div className="text-sm text-muted-foreground">
+            No methods configured
           </div>
         }
       >
         <p className="text-sm text-muted-foreground">
-          {supportedMethods.length} standard Ethereum JSON-RPC methods supported
+          Standard Ethereum JSON-RPC methods
         </p>
       </ExpandableCard>
 

@@ -3,26 +3,6 @@ import { ExpandableCard } from "@/components/explorer/ExpandableCard";
 import { StatCard } from "@/components/explorer/StatCard";
 import { StatusBadge } from "@/components/explorer/StatusBadge";
 
-const consensusData = {
-  currentEpoch: 2847,
-  totalStake: "15,847,293 LATT",
-  activeStake: "14,923,841 LATT",
-  quorumThreshold: "66.67%",
-  lastFinalizedBlock: 1847288,
-};
-
-const softFinalityRules = {
-  confirmations: 1,
-  latency: "~1 second",
-  guarantee: "Probabilistic finality based on validator attestations",
-};
-
-const hardFinalityRules = {
-  confirmations: 6,
-  latency: "~6 seconds",
-  guarantee: "Cryptographic finality with 2/3+ stake attestation",
-};
-
 export const Consensus = () => {
   return (
     <div className="space-y-6">
@@ -35,22 +15,22 @@ export const Consensus = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard
           label="Current Epoch"
-          value={consensusData.currentEpoch.toLocaleString()}
+          value="—"
           icon={<Layers className="h-5 w-5" />}
         />
         <StatCard
           label="Total Stake"
-          value={consensusData.totalStake}
+          value="—"
           icon={<Users className="h-5 w-5" />}
         />
         <StatCard
           label="Active Stake"
-          value={consensusData.activeStake}
+          value="—"
           icon={<Shield className="h-5 w-5" />}
         />
         <StatCard
           label="Quorum Threshold"
-          value={consensusData.quorumThreshold}
+          value="—"
           icon={<Link2 className="h-5 w-5" />}
         />
       </div>
@@ -63,9 +43,9 @@ export const Consensus = () => {
         <div className="flex items-center justify-between">
           <div>
             <p className="text-sm text-muted-foreground">Last Finalized Block</p>
-            <p className="text-lg font-mono text-foreground">{consensusData.lastFinalizedBlock.toLocaleString()}</p>
+            <p className="text-lg font-mono text-foreground">—</p>
           </div>
-          <StatusBadge status="hard" />
+          <StatusBadge status="inactive" />
         </div>
       </ExpandableCard>
 
@@ -78,14 +58,14 @@ export const Consensus = () => {
           <div className="space-y-3">
             <div className="flex justify-between">
               <span className="text-sm text-muted-foreground">Required Confirmations</span>
-              <span className="text-sm font-mono text-foreground">{softFinalityRules.confirmations}</span>
+              <span className="text-sm font-mono text-foreground">—</span>
             </div>
             <div className="flex justify-between">
               <span className="text-sm text-muted-foreground">Expected Latency</span>
-              <span className="text-sm font-mono text-foreground">{softFinalityRules.latency}</span>
+              <span className="text-sm font-mono text-foreground">—</span>
             </div>
             <div className="pt-2 border-t border-border/50">
-              <p className="text-sm text-muted-foreground">{softFinalityRules.guarantee}</p>
+              <p className="text-sm text-muted-foreground">Probabilistic finality based on validator attestations</p>
             </div>
           </div>
         }
@@ -105,14 +85,14 @@ export const Consensus = () => {
           <div className="space-y-3">
             <div className="flex justify-between">
               <span className="text-sm text-muted-foreground">Required Confirmations</span>
-              <span className="text-sm font-mono text-foreground">{hardFinalityRules.confirmations}</span>
+              <span className="text-sm font-mono text-foreground">—</span>
             </div>
             <div className="flex justify-between">
               <span className="text-sm text-muted-foreground">Expected Latency</span>
-              <span className="text-sm font-mono text-foreground">{hardFinalityRules.latency}</span>
+              <span className="text-sm font-mono text-foreground">—</span>
             </div>
             <div className="pt-2 border-t border-border/50">
-              <p className="text-sm text-muted-foreground">{hardFinalityRules.guarantee}</p>
+              <p className="text-sm text-muted-foreground">Cryptographic finality with 2/3+ stake attestation</p>
             </div>
           </div>
         }
