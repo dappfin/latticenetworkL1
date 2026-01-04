@@ -1,0 +1,36 @@
+{
+  "chain_id": 88401,
+  "genesis_hash": "2bd5aea93e4a7edfe1e06f6166e4602092ec2599a10a6b8b9ecb29b0a5b0710f",
+
+  "latest_block": 0,
+  "latest_layer": 0,
+
+  "validators": [
+    {
+      "validator_id": "cdf994e30877dbdba4ee349c113aeb5ed3a46e7a0a851c295e152b770e02c001",
+      "stake": 1000000,
+      "active": true
+    }
+  ],
+
+  "total_stake": 1000000,
+
+  "finality_rules": {
+    "soft": {
+      "stake_threshold": 0.67,
+      "required_layers": 2
+    },
+    "hard": {
+      "stake_threshold": 0.67,
+      "epoch_seconds": 30
+    }
+  },
+
+  "soft_finality": {
+    "last_finalized_layer": -1
+  },
+
+  "hard_finality": {
+    "last_finalized_block": -1
+  }
+}

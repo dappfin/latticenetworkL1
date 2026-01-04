@@ -1,0 +1,1 @@
+{"genesis_hash_file": "./genesis/genesis_hash.txt", "consensus_state_file": "./indexer/data/consensus_state.json", "database_path": "./indexer/data/indexer.db"}

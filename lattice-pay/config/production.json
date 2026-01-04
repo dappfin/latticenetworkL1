@@ -1,0 +1,13 @@
+{
+  "network": {
+    "rpc": "https://your-production-rpc-url",
+    "chainId": 88401
+  },
+  "contracts": {
+    "gatewayRegistry": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9"
+  },
+  "security": {
+    "note": "Use secret management service for production deployments",
+    "warning": "NEVER hardcode production secrets in config files"
+  }
+}

@@ -1,0 +1,19 @@
+=== LATTICE NODE HEALTH REPORT ===
+Generated: to 1.1.2026 15.05.29 +0200
+
+Node 1 (Port 8545):
+  Status: HEALTHY
+  Consensus: {"jsonrpc":"2.0","result":{"currentBlock":53,"currentLayer":53,"totalValidators":4,"activeValidators":4,"softFinality":false,"hardFinality":false},"id":1}
+
+Node 2 (Port 8547):
+  Status: HEALTHY
+  Consensus: {"jsonrpc":"2.0","result":{"currentBlock":52,"currentLayer":52,"totalValidators":4,"activeValidators":4,"softFinality":false,"hardFinality":false},"id":1}
+
+Node 3 (Port 8549):
+  Status: HEALTHY
+  Consensus: {"jsonrpc":"2.0","result":{"currentBlock":52,"currentLayer":52,"totalValidators":4,"activeValidators":4,"softFinality":false,"hardFinality":false},"id":1}
+
+Node 4 (Port 8551):
+  Status: HEALTHY
+  Consensus: {"jsonrpc":"2.0","result":{"currentBlock":52,"currentLayer":52,"totalValidators":4,"activeValidators":4,"softFinality":false,"hardFinality":false},"id":1}
+

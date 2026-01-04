@@ -1,0 +1,7 @@
+{
+  "max_pool_size": 10000,
+  "max_tx_size": 1048576,
+  "min_gas_price": 1000000000,
+  "max_gas_price": 1000000000000,
+  "pool_timeout": 300
+}

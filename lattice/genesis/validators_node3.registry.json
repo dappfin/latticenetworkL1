@@ -1,0 +1,1 @@
+{"validators": [{"validator_id": "cdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890ab", "pubkey_path": "./validators/keys/node3/validator.pub", "stake": 1000000, "active": true}], "genesis_hash_path": "./genesis/genesis_hash.txt"}

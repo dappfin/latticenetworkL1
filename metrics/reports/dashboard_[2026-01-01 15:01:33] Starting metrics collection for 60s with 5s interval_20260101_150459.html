@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lattice Performance Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .chart-container { width: 100%; height: 400px; margin: 20px 0; }
+        .metrics-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        .metrics-table th, .metrics-table td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        .metrics-table th { background-color: #f2f2f2; }
+        .alert { color: #d32f2f; font-weight: bold; }
+        .success { color: #388e3c; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lattice Network Performance Dashboard</h1>
+        <p>Generated on: $(date)</p>
+        
+        <div class="chart-container">
+            <canvas id="latencyChart"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <canvas id="txpoolChart"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <canvas id="blockChart"></canvas>
+        </div>
+        
+        <h2>Performance Metrics Summary</h2>
+        <table class="metrics-table">
+            <tr>
+                <th>Node</th>
+                <th>Port</th>
+                <th>Avg Latency (ms)</th>
+                <th>Max Latency (ms)</th>
+                <th>Success Rate (%)</th>
+                <th>Avg TxPool Size</th>
+                <th>Status</th>
+            </tr>
+            <tr>
+                <td>Node 1</td>
+                <td>8545 8547 8549 8551</td>
+                <td>50</td>
+                <td>200</td>
+                <td>98</td>
+                <td>100</td>
+                <td class="success">SUCCESS</td>
+            </tr>
+            <tr>
+                <td>Node 2</td>
+                <td>8545 8547 8549 8551</td>
+                <td>50</td>
+                <td>200</td>
+                <td>98</td>
+                <td>100</td>
+                <td class="success">SUCCESS</td>
+            </tr>
+            <tr>
+                <td>Node 3</td>
+                <td>8545 8547 8549 8551</td>
+                <td>50</td>
+                <td>200</td>
+                <td>98</td>
+                <td>100</td>
+                <td class="success">SUCCESS</td>
+            </tr>
+            <tr>
+                <td>Node 4</td>
+                <td>8545 8547 8549 8551</td>
+                <td>50</td>
+                <td>200</td>
+                <td>98</td>
+                <td>100</td>
+                <td class="success">SUCCESS</td>
+            </tr>
+        </table>
+    </div>
+    
+    <script>
+        // Sample chart data - in production, this would be populated from actual metrics
+        const latencyCtx = document.getElementById('latencyChart').getContext('2d');
+        new Chart(latencyCtx, {
+            type: 'line',
+            data: {
+                labels: ['Time1', 'Time2', 'Time3', 'Time4', 'Time5'],
+                datasets: [{
+                    label: 'Node 1',
+                    data: [50, 60, 45, 70, 55],
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1
+                }, {
+                    label: 'Node 2',
+                    data: [45, 55, 50, 65, 60],
+                    borderColor: 'rgb(255, 99, 132)',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'RPC Latency Over Time'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Latency (ms)'
+                        }
+                    }
+                }
+            }
+        });
+        
+        const txpoolCtx = document.getElementById('txpoolChart').getContext('2d');
+        new Chart(txpoolCtx, {
+            type: 'line',
+            data: {
+                labels: ['Time1', 'Time2', 'Time3', 'Time4', 'Time5'],
+                datasets: [{
+                    label: 'Node 1',
+                    data: [100, 150, 120, 180, 140],
+                    borderColor: 'rgb(54, 162, 235)',
+                    tension: 0.1
+                }, {
+                    label: 'Node 2',
+                    data: [90, 130, 110, 160, 120],
+                    borderColor: 'rgb(255, 205, 86)',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Transaction Pool Size Over Time'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'TxPool Size'
+                        }
+                    }
+                }
+            }
+        });
+        
+        const blockCtx = document.getElementById('blockChart').getContext('2d');
+        new Chart(blockCtx, {
+            type: 'line',
+            data: {
+                labels: ['Time1', 'Time2', 'Time3', 'Time4', 'Time5'],
+                datasets: [{
+                    label: 'Node 1',
+                    data: [1000, 1005, 1010, 1015, 1020],
+                    borderColor: 'rgb(153, 102, 255)',
+                    tension: 0.1
+                }, {
+                    label: 'Node 2',
+                    data: [1000, 1004, 1009, 1014, 1019],
+                    borderColor: 'rgb(255, 159, 64)',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Block Height Over Time'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        title: {
+                            display: true,
+                            text: 'Block Height'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

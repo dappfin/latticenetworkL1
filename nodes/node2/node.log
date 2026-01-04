@@ -1,0 +1,467 @@
+Lattice L1 Node v1.0.0
+Combining classical and post-quantum cryptography
+
+Initializing Lattice Node...
+RPC configuration loaded: port=8547, fallback=8548
+Initializing consensus engine...
+Found 4 validators in registry
+Loaded 4 validators from registry
+Consensus initialized with 4 validators, total stake: 4000000
+Initializing EVM runtime...
+EVM initialized with 1000000000 total supply
+Initializing RPC server on port 8547...
+RPC server initialized successfully
+Initializing indexer...
+Using database path from config: ./nodes/node2/indexer.db
+Database tables created successfully
+Indexer initialized, last indexed block: 0
+Lattice Node initialized successfully
+Starting Lattice Node...
+RPC worker started
+Lattice Node is running...
+RPC server available on port 8545
+Press Ctrl+C to stop
+RPC server listening on port 8547
+Indexer worker started
+Consensus worker started
+Status: Block 0, Layer 0, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Status: Block 0, Layer 0, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Status: Block 0, Layer 0, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Status: Block 0, Layer 0, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Status: Block 0, Layer 0, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Created block 1 by validator 0
+Added block 1 to chain
+Indexed block 1
+Hard finality achieved at block 1, epoch 0
+Created block 2 by validator 2
+Added block 2 to chain
+Indexed block 2
+Soft finality achieved at block 2
+Hard finality achieved at block 2, epoch 1
+Created block 3 by validator 1
+Added block 3 to chain
+Indexed block 3
+Soft finality achieved at block 3
+Hard finality achieved at block 3, epoch 2
+Created block 4 by validator 2
+Added block 4 to chain
+Indexed block 4
+Soft finality achieved at block 4
+Hard finality achieved at block 4, epoch 3
+Created block 5 by validator 1
+Added block 5 to chain
+Indexed block 5
+Soft finality achieved at block 5
+Hard finality achieved at block 5, epoch 4
+Created block 6 by validator 0
+Added block 6 to chain
+Indexed block 6
+Soft finality achieved at block 6
+Hard finality achieved at block 6, epoch 5
+Created block 7 by validator 3
+Added block 7 to chain
+Indexed block 7
+Soft finality achieved at block 7
+Hard finality achieved at block 7, epoch 6
+Created block 8 by validator 1
+Added block 8 to chain
+Indexed block 8
+Soft finality achieved at block 8
+Hard finality achieved at block 8, epoch 7
+Created block 9 by validator 0
+Added block 9 to chain
+Indexed block 9
+Soft finality achieved at block 9
+Hard finality achieved at block 9, epoch 8
+Created block 10 by validator 1
+Added block 10 to chain
+Indexed block 10
+Soft finality achieved at block 10
+Hard finality achieved at block 10, epoch 9
+Status: Block 10, Layer 10, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Status: Block 10, Layer 10, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Status: Block 10, Layer 10, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Status: Block 10, Layer 10, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Status: Block 10, Layer 10, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Created block 11 by validator 1
+Added block 11 to chain
+Indexed block 11
+Soft finality achieved at block 11
+Hard finality achieved at block 11, epoch 10
+Created block 12 by validator 2
+Added block 12 to chain
+Indexed block 12
+Soft finality achieved at block 12
+Hard finality achieved at block 12, epoch 11
+Created block 13 by validator 3
+Added block 13 to chain
+Indexed block 13
+Soft finality achieved at block 13
+Hard finality achieved at block 13, epoch 12
+Created block 14 by validator 2
+Added block 14 to chain
+Indexed block 14
+Soft finality achieved at block 14
+Hard finality achieved at block 14, epoch 13
+Created block 15 by validator 0
+Added block 15 to chain
+Indexed block 15
+Soft finality achieved at block 15
+Hard finality achieved at block 15, epoch 14
+Created block 16 by validator 3
+Added block 16 to chain
+Indexed block 16
+Soft finality achieved at block 16
+Hard finality achieved at block 16, epoch 15
+Created block 17 by validator 1
+Added block 17 to chain
+Indexed block 17
+Soft finality achieved at block 17
+Hard finality achieved at block 17, epoch 16
+Created block 18 by validator 0
+Added block 18 to chain
+Indexed block 18
+Soft finality achieved at block 18
+Hard finality achieved at block 18, epoch 17
+Created block 19 by validator 0
+Added block 19 to chain
+Indexed block 19
+Soft finality achieved at block 19
+Hard finality achieved at block 19, epoch 18
+Created block 20 by validator 3
+Added block 20 to chain
+Indexed block 20
+Soft finality achieved at block 20
+Hard finality achieved at block 20, epoch 19
+Status: Block 20, Layer 20, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Status: Block 20, Layer 20, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Status: Block 20, Layer 20, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Status: Block 20, Layer 20, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Status: Block 20, Layer 20, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Created block 21 by validator 3
+Added block 21 to chain
+Indexed block 21
+Soft finality achieved at block 21
+Hard finality achieved at block 21, epoch 20
+Created block 22 by validator 1
+Added block 22 to chain
+Indexed block 22
+Soft finality achieved at block 22
+Hard finality achieved at block 22, epoch 21
+Created block 23 by validator 2
+Added block 23 to chain
+Indexed block 23
+Soft finality achieved at block 23
+Hard finality achieved at block 23, epoch 22
+Created block 24 by validator 2
+Added block 24 to chain
+Indexed block 24
+Soft finality achieved at block 24
+Hard finality achieved at block 24, epoch 23
+Created block 25 by validator 0
+Added block 25 to chain
+Indexed block 25
+Soft finality achieved at block 25
+Hard finality achieved at block 25, epoch 24
+Created block 26 by validator 1
+Added block 26 to chain
+Indexed block 26
+Soft finality achieved at block 26
+Hard finality achieved at block 26, epoch 25
+Created block 27 by validator 2
+Added block 27 to chain
+Indexed block 27
+Soft finality achieved at block 27
+Hard finality achieved at block 27, epoch 26
+Created block 28 by validator 1
+Added block 28 to chain
+Indexed block 28
+Soft finality achieved at block 28
+Hard finality achieved at block 28, epoch 27
+Created block 29 by validator 1
+Added block 29 to chain
+Indexed block 29
+Soft finality achieved at block 29
+Hard finality achieved at block 29, epoch 28
+Created block 30 by validator 0
+Added block 30 to chain
+Indexed block 30
+Soft finality achieved at block 30
+Hard finality achieved at block 30, epoch 29
+Status: Block 30, Layer 30, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Status: Block 30, Layer 30, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Status: Block 30, Layer 30, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Status: Block 30, Layer 30, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Status: Block 30, Layer 30, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Created block 31 by validator 1
+Added block 31 to chain
+Indexed block 31
+Soft finality achieved at block 31
+Hard finality achieved at block 31, epoch 30
+Created block 32 by validator 1
+Added block 32 to chain
+Indexed block 32
+Soft finality achieved at block 32
+Hard finality achieved at block 32, epoch 31
+Created block 33 by validator 3
+Added block 33 to chain
+Indexed block 33
+Soft finality achieved at block 33
+Hard finality achieved at block 33, epoch 32
+Created block 34 by validator 3
+Added block 34 to chain
+Indexed block 34
+Soft finality achieved at block 34
+Hard finality achieved at block 34, epoch 33
+Created block 35 by validator 1
+Added block 35 to chain
+Indexed block 35
+Soft finality achieved at block 35
+Hard finality achieved at block 35, epoch 34
+Created block 36 by validator 1
+Added block 36 to chain
+Indexed block 36
+Soft finality achieved at block 36
+Hard finality achieved at block 36, epoch 35
+Created block 37 by validator 3
+Added block 37 to chain
+Indexed block 37
+Soft finality achieved at block 37
+Hard finality achieved at block 37, epoch 36
+Created block 38 by validator 1
+Added block 38 to chain
+Indexed block 38
+Soft finality achieved at block 38
+Hard finality achieved at block 38, epoch 37
+Created block 39 by validator 0
+Added block 39 to chain
+Indexed block 39
+Soft finality achieved at block 39
+Hard finality achieved at block 39, epoch 38
+Created block 40 by validator 0
+Added block 40 to chain
+Indexed block 40
+Soft finality achieved at block 40
+Hard finality achieved at block 40, epoch 39
+Status: Block 40, Layer 40, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Status: Block 40, Layer 40, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Status: Block 40, Layer 40, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Status: Block 40, Layer 40, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Status: Block 40, Layer 40, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Created block 41 by validator 3
+Added block 41 to chain
+Indexed block 41
+Soft finality achieved at block 41
+Hard finality achieved at block 41, epoch 40
+Created block 42 by validator 1
+Added block 42 to chain
+Indexed block 42
+Soft finality achieved at block 42
+Hard finality achieved at block 42, epoch 41
+Created block 43 by validator 3
+Added block 43 to chain
+Indexed block 43
+Soft finality achieved at block 43
+Hard finality achieved at block 43, epoch 42
+Created block 44 by validator 2
+Added block 44 to chain
+Indexed block 44
+Soft finality achieved at block 44
+Hard finality achieved at block 44, epoch 43
+Created block 45 by validator 0
+Added block 45 to chain
+Indexed block 45
+Soft finality achieved at block 45
+Hard finality achieved at block 45, epoch 44
+Created block 46 by validator 0
+Added block 46 to chain
+Indexed block 46
+Soft finality achieved at block 46
+Hard finality achieved at block 46, epoch 45
+Created block 47 by validator 2
+Added block 47 to chain
+Indexed block 47
+Soft finality achieved at block 47
+Hard finality achieved at block 47, epoch 46
+Created block 48 by validator 1
+Added block 48 to chain
+Indexed block 48
+Soft finality achieved at block 48
+Hard finality achieved at block 48, epoch 47
+Created block 49 by validator 1
+Added block 49 to chain
+Indexed block 49
+Soft finality achieved at block 49
+Hard finality achieved at block 49, epoch 48
+Created block 50 by validator 2
+Added block 50 to chain
+Indexed block 50
+Soft finality achieved at block 50
+Hard finality achieved at block 50, epoch 49
+Status: Block 50, Layer 50, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Status: Block 50, Layer 50, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Status: Block 50, Layer 50, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Status: Block 50, Layer 50, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Status: Block 50, Layer 50, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Created block 51 by validator 1
+Added block 51 to chain
+Indexed block 51
+Soft finality achieved at block 51
+Hard finality achieved at block 51, epoch 50
+Created block 52 by validator 0
+Added block 52 to chain
+Indexed block 52
+Soft finality achieved at block 52
+Hard finality achieved at block 52, epoch 51
+Created block 53 by validator 0
+Added block 53 to chain
+Indexed block 53
+Soft finality achieved at block 53
+Hard finality achieved at block 53, epoch 52
+Created block 54 by validator 0
+Added block 54 to chain
+Indexed block 54
+Soft finality achieved at block 54
+Hard finality achieved at block 54, epoch 53
+Created block 55 by validator 3
+Added block 55 to chain
+Indexed block 55
+Soft finality achieved at block 55
+Hard finality achieved at block 55, epoch 54
+Created block 56 by validator 1
+Added block 56 to chain
+Indexed block 56
+Soft finality achieved at block 56
+Hard finality achieved at block 56, epoch 55
+Created block 57 by validator 1
+Added block 57 to chain
+Indexed block 57
+Soft finality achieved at block 57
+Hard finality achieved at block 57, epoch 56
+Created block 58 by validator 2
+Added block 58 to chain
+Indexed block 58
+Soft finality achieved at block 58
+Hard finality achieved at block 58, epoch 57
+Created block 59 by validator 2
+Added block 59 to chain
+Indexed block 59
+Soft finality achieved at block 59
+Hard finality achieved at block 59, epoch 58
+Created block 60 by validator 3
+Added block 60 to chain
+Indexed block 60
+Soft finality achieved at block 60
+Hard finality achieved at block 60, epoch 59
+Status: Block 60, Layer 60, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Status: Block 60, Layer 60, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Status: Block 60, Layer 60, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Status: Block 60, Layer 60, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Status: Block 60, Layer 60, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Created block 61 by validator 3
+Added block 61 to chain
+Indexed block 61
+Soft finality achieved at block 61
+Hard finality achieved at block 61, epoch 60
+Created block 62 by validator 0
+Added block 62 to chain
+Indexed block 62
+Soft finality achieved at block 62
+Hard finality achieved at block 62, epoch 61
+Created block 63 by validator 1
+Added block 63 to chain
+Indexed block 63
+Soft finality achieved at block 63
+Hard finality achieved at block 63, epoch 62
+Created block 64 by validator 3
+Added block 64 to chain
+Indexed block 64
+Soft finality achieved at block 64
+Hard finality achieved at block 64, epoch 63
+Created block 65 by validator 0
+Added block 65 to chain
+Indexed block 65
+Soft finality achieved at block 65
+Hard finality achieved at block 65, epoch 64
+Created block 66 by validator 3
+Added block 66 to chain
+Indexed block 66
+Soft finality achieved at block 66
+Hard finality achieved at block 66, epoch 65
+Created block 67 by validator 1
+Added block 67 to chain
+Indexed block 67
+Soft finality achieved at block 67
+Hard finality achieved at block 67, epoch 66
+Created block 68 by validator 0
+Added block 68 to chain
+Indexed block 68
+Soft finality achieved at block 68
+Hard finality achieved at block 68, epoch 67
+Created block 69 by validator 0
+Added block 69 to chain
+Indexed block 69
+Soft finality achieved at block 69
+Hard finality achieved at block 69, epoch 68
+Created block 70 by validator 1
+Added block 70 to chain
+Indexed block 70
+Soft finality achieved at block 70
+Hard finality achieved at block 70, epoch 69
+Status: Block 70, Layer 70, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Status: Block 70, Layer 70, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Status: Block 70, Layer 70, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Status: Block 70, Layer 70, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Status: Block 70, Layer 70, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Created block 71 by validator 1
+Added block 71 to chain
+Indexed block 71
+Soft finality achieved at block 71
+Hard finality achieved at block 71, epoch 70
+Created block 72 by validator 0
+Added block 72 to chain
+Indexed block 72
+Soft finality achieved at block 72
+Hard finality achieved at block 72, epoch 71
+Created block 73 by validator 3
+Added block 73 to chain
+Indexed block 73
+Soft finality achieved at block 73
+Hard finality achieved at block 73, epoch 72
+Created block 74 by validator 1
+Added block 74 to chain
+Indexed block 74
+Soft finality achieved at block 74
+Hard finality achieved at block 74, epoch 73
+Created block 75 by validator 2
+Added block 75 to chain
+Indexed block 75
+Soft finality achieved at block 75
+Hard finality achieved at block 75, epoch 74
+Created block 76 by validator 0
+Added block 76 to chain
+Indexed block 76
+Soft finality achieved at block 76
+Hard finality achieved at block 76, epoch 75
+Created block 77 by validator 2
+Added block 77 to chain
+Indexed block 77
+Soft finality achieved at block 77
+Hard finality achieved at block 77, epoch 76
+Created block 78 by validator 1
+Added block 78 to chain
+Indexed block 78
+Soft finality achieved at block 78
+Hard finality achieved at block 78, epoch 77
+Created block 79 by validator 2
+Added block 79 to chain
+Indexed block 79
+Soft finality achieved at block 79
+Hard finality achieved at block 79, epoch 78
+Created block 80 by validator 0
+Added block 80 to chain
+Indexed block 80
+Soft finality achieved at block 80
+Hard finality achieved at block 80, epoch 79
+Status: Block 80, Layer 80, Validators 4/4, Soft Finality: NO, Hard Finality: NO
+Status: Block 80, Layer 80, Validators 4/4, Soft Fi

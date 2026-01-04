@@ -1,0 +1,5 @@
+{
+  "chainId": 88401,
+  "rpc": "http://localhost:8545",
+  "confirmations": 1
+}

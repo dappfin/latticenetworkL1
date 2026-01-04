@@ -1,0 +1,10 @@
+[2026-01-01 15:01:33] Starting metrics collection for 3600s with 5s interval
+[2026-01-01 15:01:33] Starting metrics collection for 60s with 5s interval
+[2026-01-01 15:04:59] Metrics file not found: [2026-01-01 15:01:33] Starting metrics collection for 60s with 5s interval
+[2026-01-01 15:04:59] Generating performance dashboard: ./metrics/reports/dashboard_[2026-01-01 15:01:33] Starting metrics collection for 60s with 5s interval_20260101_150459.html
+[2026-01-01 15:04:59] Dashboard generated: ./metrics/reports/dashboard_[2026-01-01 15:01:33] Starting metrics collection for 60s with 5s interval_20260101_150459.html
+[2026-01-01 15:08:52] Starting metrics collection for 3600s with 5s interval
+[2026-01-01 15:08:52] Starting metrics collection for 60s with 5s interval
+[2026-01-01 15:15:07] Metrics file not found: [2026-01-01 15:08:52] Starting metrics collection for 60s with 5s interval
+[2026-01-01 15:15:07] Generating performance dashboard: ./metrics/reports/dashboard_[2026-01-01 15:08:52] Starting metrics collection for 60s with 5s interval_20260101_151507.html
+[2026-01-01 15:15:07] Dashboard generated: ./metrics/reports/dashboard_[2026-01-01 15:08:52] Starting metrics collection for 60s with 5s interval_20260101_151507.html

@@ -1,0 +1,7 @@
+{
+  "chain_id": 88401,
+  "db_path": "./nodes/node4/indexer.db",
+  "sync_interval": 1000,
+  "batch_size": 100,
+  "max_connections": 10
+}

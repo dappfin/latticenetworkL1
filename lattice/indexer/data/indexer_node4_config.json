@@ -1,0 +1,1 @@
+{"genesis_hash_file": "./lattice/genesis/genesis_hash.txt", "consensus_state_file": "./lattice/indexer/data/consensus_state.json", "database_path": "./lattice/indexer/data/node4.db"}

@@ -1,0 +1,1 @@
+{"chain_id": 88401, "rpc_port": 8545, "rpc_port_fallback": 8546, "max_requests_per_sec": 20, "burst_requests": 40, "max_eth_sendRawTransaction_per_sec": 5, "max_eth_getLogs_per_sec": 1, "heavy_archive_calls": false, "signature_domain": "LATTICE|L1|CHAINID:88401|TX", "read_only": false}

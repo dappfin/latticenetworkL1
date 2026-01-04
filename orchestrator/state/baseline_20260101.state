@@ -1,0 +1,6 @@
+BASELINE_METRICS_FILE=[2026-01-01 15:08:52] Starting metrics collection for 60s with 5s interval
+BASELINE_ANALYSIS_FILE=[2026-01-01 15:15:07] Metrics file not found: [2026-01-01 15:08:52] Starting metrics collection for 60s with 5s interval
+BASELINE_DASHBOARD_FILE=[2026-01-01 15:15:07] Generating performance dashboard: ./metrics/reports/dashboard_[2026-01-01 15:08:52] Starting metrics collection for 60s with 5s interval_20260101_151507.html
+[2026-01-01 15:15:07] Dashboard generated: ./metrics/reports/dashboard_[2026-01-01 15:08:52] Starting metrics collection for 60s with 5s interval_20260101_151507.html
+./metrics/reports/dashboard_[2026-01-01 15:08:52] Starting metrics collection for 60s with 5s interval_20260101_151507.html
+BASELINE_TIMESTAMP=to 1.1.2026 15.15.07 +0200

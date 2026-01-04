@@ -1,0 +1,7 @@
+{
+  "sponsoredTxPerSession": 1,
+  "requireSubscription": true,
+  "allowedSessionMethods": [
+    "endSession"
+  ]
+}

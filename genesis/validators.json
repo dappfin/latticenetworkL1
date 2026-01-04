@@ -1,0 +1,26 @@
+{
+  "chain_id": 88401,
+  "hash": "keccak-256",
+  "signature_scheme": "CRYSTALS-Dilithium",
+  "nist_level": 3,
+  "dag": {
+    "layer_interval_seconds": 1.6,
+    "max_transactions_per_layer": 300,
+    "max_parents_per_vertex": 2
+  },
+  "finality": {
+    "soft": {
+      "stake_threshold": 0.67,
+      "layers": 2
+    },
+    "hard": {
+      "stake_threshold": 0.67,
+      "epoch_seconds": 30
+    }
+  },
+  "signature_domains": {
+    "tx": "LATTICE|L1|CHAINID:88401|TX",
+    "consensus": "LATTICE|L1|CHAINID:88401|CONSENSUS",
+    "evm": "LATTICE|L1|CHAINID:88401|EVM"
+  }
+}

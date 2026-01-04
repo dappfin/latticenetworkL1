@@ -1,0 +1,11 @@
+[2026-01-01 15:05:29] Starting 10K TPS Escalation Plan
+[2026-01-01 15:05:29] Total stages: 8
+[2026-01-01 15:05:30] Starting 10K TPS Escalation Plan
+[2026-01-01 15:05:30] Total stages: 8
+[2026-01-01 15:15:21] === STAGE test: Test Run ===
+[2026-01-01 15:15:21] Target TPS: 100, Duration: 30s
+[2026-01-01 15:15:21] Load distribution: 25 TPS per node (+0 extra)
+[2026-01-01 15:15:21] Starting 25 TPS on node 1 (port 8545)
+[2026-01-01 15:15:21] Starting 25 TPS on node 2 (port 8547)
+[2026-01-01 15:15:21] Starting 25 TPS on node 3 (port 8549)
+[2026-01-01 15:15:21] Starting 25 TPS on node 4 (port 8551)

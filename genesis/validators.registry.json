@@ -1,0 +1,13 @@
+{
+  "layer": 0,
+  "validators": [
+    {
+      "validator_id": "cdf994e30877dbdba4ee349c113aeb5ed3a46e7a0a851c295e152b770e02c001",
+      "signature_scheme": "CRYSTALS-Dilithium",
+      "nist_level": 3,
+      "stake": 1000000,
+      "pubkey_path": "validators/keys/validator.pub"
+    }
+  ],
+  "total_stake": 1000000
+}

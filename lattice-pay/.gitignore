@@ -1,0 +1,76 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build outputs
+dist/
+build/
+out/
+*.tsbuildinfo
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Hardhat files
+cache/
+artifacts/
+typechain-types/
+
+# Private keys and secrets
+*.pem
+*.key
+private_key*
+secret*
+mnemonic*
+wallet.json
+keystore.json
+gas_tank_wallet*
+paymaster_wallet*
+0x1bd3841af088e60E7fDa94E461182D50B8364214*
+
+# Deployment artifacts that might contain sensitive data
+deployments/**/*.json
+!deployments/**/addresses.json.template
+
+# Test files
+test-results/
+*.tgz
+*.tar.gz
+
+# Temporary files
+tmp/
+temp/

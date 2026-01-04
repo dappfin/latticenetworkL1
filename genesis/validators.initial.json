@@ -1,0 +1,29 @@
+{
+  "epoch": 0,
+  "validators": [
+    {
+      "id": 0,
+      "pubkey": "0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890",
+      "stake": 1000000,
+      "status": "active"
+    },
+    {
+      "id": 1,
+      "pubkey": "0xbcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890",
+      "stake": 1000000,
+      "status": "active"
+    },
+    {
+      "id": 2,
+      "pubkey": "0xcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890",
+      "stake": 1000000,
+      "status": "active"
+    },
+    {
+      "id": 3,
+      "pubkey": "0xdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890",
+      "stake": 1000000,
+      "status": "active"
+    }
+  ]
+}

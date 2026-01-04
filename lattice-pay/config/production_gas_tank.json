@@ -1,0 +1,31 @@
+{
+  "paymasterGasTank": {
+    "wallet": "0x1bd3841af088e60E7fDa94E461182D50B8364214",
+    "network": "mainnet",
+    "initialized": true,
+    "enterprise": true
+  },
+  "gasTankControls": {
+    "minLGUReserve": "100000000000000000000000", // 100K LGU minimum reserve
+    "dailyLGULimit": "10000000000000000000000000", // 10M LGU daily limit
+    "maxGasPerSession": "1000000000000000000000", // 1K LGU max per session
+    "lguPriceUSDT": "1000000", // 1 USDT per LGU (6 decimals)
+    "healthMode": "ACTIVE"
+  },
+  "partnerGateways": {
+    "enabled": true,
+    "defaultDailyLimit": "1000000000000000000000000", // 1M LGU per gateway
+    "revenueShareEnabled": false,
+    "metadataRequired": true
+  },
+  "monitoring": {
+    "alertThresholds": {
+      "lgubalanceWarning": "200000000000000000000000", // 200K LGU
+      "lgubalanceCritical": "100000000000000000000000", // 100K LGU
+      "dailyUsageWarning": "8000000000000000000000000", // 8M LGU
+      "dailyUsageCritical": "9500000000000000000000000" // 9.5M LGU
+    },
+    "reportingInterval": 300,
+    "emergencyPause": true
+  }
+}
