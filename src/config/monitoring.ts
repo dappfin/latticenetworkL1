@@ -51,9 +51,9 @@ export const NODE_CONFIG = {
     chainId: "88401"
   },
 
-  // Monitoring Configuration
+  // Monitoring Configuration - UPDATED FOR 10s REFRESH
   monitoring: {
-    refreshInterval: 5000, // 5 seconds
+    refreshInterval: 10000, // 10 seconds - REAL-TIME UPDATES
     timeout: 10000, // 10 seconds
     retryAttempts: 3,
     alertThresholds: {
@@ -94,7 +94,7 @@ export const NODE_CONFIG = {
   ]
 };
 
-// UI Configuration for monitoring
+// UI Configuration for monitoring - UPDATED FOR REAL-TIME
 export const UI_CONFIG = {
   theme: "dark",
   layout: "dashboard",
@@ -107,9 +107,11 @@ export const UI_CONFIG = {
     historicalData: true
   },
   dashboard: {
-    refreshInterval: 5000,
+    refreshInterval: 10000, // 10 seconds - REAL-TIME UPDATES
     maxDataPoints: 1000,
-    chartTypes: ["line", "bar", "gauge", "heatmap"]
+    chartTypes: ["line", "bar", "gauge", "heatmap"],
+    animations: true,
+    liveStreaming: true
   }
 };
 
