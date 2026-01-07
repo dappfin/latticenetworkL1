@@ -156,3 +156,6 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Validator keys - CRITICAL SECRETS
+validators/keys/*.key
