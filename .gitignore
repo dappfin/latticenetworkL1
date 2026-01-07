@@ -159,3 +159,7 @@ yarn-error.log*
 
 # Validator keys - CRITICAL SECRETS
 validators/keys/*.key
+
+# CRITICAL: Production PQ keys
+validator_production_pq_key.json
+*_pq_key.json
