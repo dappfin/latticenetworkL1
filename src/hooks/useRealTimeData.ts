@@ -53,11 +53,12 @@ export const useRealTimeData = (): UseRealTimeDataReturn => {
           const isOnline = Math.random() > 0.05; // 95% uptime
           
           return {
-            ...source,
-            status: isOnline ? 'online' : 'warning',
+            id: source.id,
+            name: source.name,
+            status: (isOnline ? 'online' : 'warning') as 'online' | 'offline' | 'warning',
             lastSeen: new Date().toISOString(),
             blockHeight: baseHeight + Math.floor(Math.random() * 50),
-            pqKeyStatus: 'valid',
+            pqKeyStatus: 'valid' as 'valid' | 'invalid' | 'missing',
             latency: Math.floor(Math.random() * 200) + 50,
             stakeWeight: '250,000'
           };

@@ -196,11 +196,6 @@ export const Validators = () => {
         title="Consensus Details"
         icon={<Users className="h-5 w-5 text-primary" />}
         expandLabel="View consensus details"
-        children={
-          <p className="text-sm text-muted-foreground">
-            View detailed consensus mechanism parameters
-          </p>
-        }
         expandedContent={
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             <div>

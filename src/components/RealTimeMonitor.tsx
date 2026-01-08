@@ -46,11 +46,12 @@ export const RealTimeMonitor = () => {
             
             const data = await response.json();
             return {
-              ...source,
-              status: 'online',
+              id: source.id,
+              name: source.name,
+              status: 'online' as 'online' | 'offline' | 'warning',
               lastSeen: new Date().toISOString(),
               blockHeight: data.blockHeight || 0,
-              pqKeyStatus: data.pqKeyValid ? 'valid' : 'invalid',
+              pqKeyStatus: (data.pqKeyValid ? 'valid' : 'invalid') as 'valid' | 'invalid' | 'missing',
               latency: data.latency || 0,
               stakeWeight: data.stakeWeight || '0'
             };
