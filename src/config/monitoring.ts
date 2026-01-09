@@ -68,24 +68,28 @@ export const NODE_CONFIG = {
   // Real-time Data Sources
   dataSources: [
     {
+      id: "vm-1-v1",
       name: "vm-1-validator-1",
       type: "validator",
       endpoint: "http://77.42.84.199:26658",
       metrics: "http://77.42.84.199:26658/metrics"
     },
     {
+      id: "vm-1-v2",
       name: "vm-1-validator-2", 
       type: "validator",
       endpoint: "http://77.42.84.199:26659",
       metrics: "http://77.42.84.199:26659/metrics"
     },
     {
+      id: "vm-2-v3",
       name: "vm-2-validator-3",
       type: "validator", 
       endpoint: "http://157.180.81.129:26660",
       metrics: "http://157.180.81.129:26660/metrics"
     },
     {
+      id: "vm-2-v4",
       name: "vm-2-validator-4",
       type: "validator",
       endpoint: "http://157.180.81.129:26661", 

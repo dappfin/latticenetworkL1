@@ -1,61 +1,62 @@
-import { Activity, Box, Layers, Clock, Users, Shield, Zap, Database } from "lucide-react";
+import { Activity, Box, Layers, Clock, Users, Shield, Zap, Database, RefreshCw } from "lucide-react";
 import { StatCard } from "@/components/explorer/StatCard";
 import { StatusBadge } from "@/components/explorer/StatusBadge";
 import { ExpandableCard } from "@/components/explorer/ExpandableCard";
-import { useRealTimeData } from "@/hooks/useRealTimeData";
+import { useBlockchainData } from "@/hooks/useBlockchainData";
+import { RPC_CONFIG } from "@/config/rpc";
+import { Button } from "@/components/ui/button";
 
 export const Overview = () => {
-  const { nodeStatuses, metrics, isConnecting, lastUpdate, error } = useRealTimeData();
+  const { 
+    blockHeight, 
+    chainId, 
+    gasPrice, 
+    peerCount, 
+    syncing, 
+    isLoading, 
+    lastUpdated,
+    refetch 
+  } = useBlockchainData();
 
-  // Dynamic network data that updates every 10 seconds
-  const networkData = {
-    chainId: "88401",
-    blockHeight: metrics?.blockHeight || 4837,
-    dagLayer: Math.floor((metrics?.blockHeight || 4837) * 0.625),
-    avgBlockTime: "1.6s",
-    validators: { 
-      active: nodeStatuses.filter(n => n.status === 'online').length, 
-      total: nodeStatuses.length 
-    },
-    finality: "67% stake",
-    lastBlock: {
-      hash: "0x7f8a9b3c2d1e5f6a9b8c7d3e2f1a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9",
-      time: new Date().toISOString(),
-      validator: `Validator ${Math.floor(Math.random() * 4) + 1}`,
-      txCount: Math.floor(Math.random() * 100) + 200
-    },
-    pendingTx: Math.floor(Math.random() * 50) + 50,
-    gasPrice: `${Math.floor(Math.random() * 10) + 20} Gwei`,
-    currentEpoch: Math.floor((metrics?.blockHeight || 4837) / 30),
-    totalStake: "1,000,000",
-    nodeVersion: "v1.0.0",
-    genesisHash: "0x8a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2",
-    rpcEndpoints: [
-      "http://77.42.84.199:8545",
-      "http://157.180.81.129:8545"
-    ],
-    indexerStatus: "active",
-    executionEngineStatus: "active"
+  const getNetworkStatus = () => {
+    if (isLoading) return "syncing";
+    if (syncing) return "syncing";
+    if (blockHeight !== null) return "healthy";
+    return "degraded";
   };
 
-export const Overview = () => {
+  const formatValue = (value: unknown) => {
+    if (isLoading) return "...";
+    if (value === null || value === undefined) return "—";
+    return String(value);
+  };
+
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-semibold text-foreground">Network Overview</h1>
-        <p className="text-muted-foreground mt-1">Real-time network state</p>
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-2xl font-semibold text-foreground">Network Overview</h1>
+          <p className="text-muted-foreground mt-1">Real-time network state</p>
+        </div>
+        <Button 
+          variant="outline" 
+          size="sm" 
+          onClick={refetch}
+          disabled={isLoading}
+          className="gap-2"
+        >
+          <RefreshCw className={`h-4 w-4 ${isLoading ? 'animate-spin' : ''}`} />
+          Refresh
+        </Button>
       </div>
 
-      {/* Status indicator with real-time updates */}
+      {/* Status indicator */}
       <div className="flex items-center gap-3">
         <span className="text-sm text-muted-foreground">Network Status:</span>
-        <StatusBadge status="healthy" />
-        <span className="text-xs text-muted-foreground ml-2">
-          {isConnecting ? 'Updating...' : `Last: ${lastUpdate}`}
-        </span>
-        {error && (
-          <span className="text-xs text-red-500 ml-2">
-            Error: {error}
+        <StatusBadge status={getNetworkStatus()} />
+        {lastUpdated && (
+          <span className="text-xs text-muted-foreground">
+            Updated: {lastUpdated.toLocaleTimeString()}
           </span>
         )}
       </div>
@@ -64,33 +65,32 @@ export const Overview = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
         <StatCard
           label="Chain ID"
-          value={networkData.chainId}
+          value={formatValue(chainId || RPC_CONFIG.chainId)}
           icon={<Activity className="h-5 w-5" />}
         />
         <StatCard
           label="Block Height"
-          value={networkData.blockHeight.toLocaleString()}
+          value={formatValue(blockHeight?.toLocaleString())}
           icon={<Box className="h-5 w-5" />}
         />
         <StatCard
-          label="DAG Layer"
-          value={networkData.dagLayer.toLocaleString()}
+          label="Peers"
+          value={formatValue(peerCount)}
+          icon={<Users className="h-5 w-5" />}
+        />
+        <StatCard
+          label="Gas Price"
+          value={formatValue(gasPrice)}
+          icon={<Zap className="h-5 w-5" />}
+        />
+        <StatCard
+          label="Syncing"
+          value={isLoading ? "..." : syncing ? "Yes" : "No"}
           icon={<Layers className="h-5 w-5" />}
         />
         <StatCard
-          label="Avg Block Time"
-          value={networkData.avgBlockTime}
-          icon={<Clock className="h-5 w-5" />}
-        />
-        <StatCard
-          label="Validators"
-          value={`${networkData.validators.active} / ${networkData.validators.total}`}
-          icon={<Users className="h-5 w-5" />}
-          subValue="active"
-        />
-        <StatCard
           label="Finality"
-          value={networkData.finality}
+          value={blockHeight ? "Confirmed" : "—"}
           icon={<Shield className="h-5 w-5" />}
         />
       </div>
@@ -103,54 +103,58 @@ export const Overview = () => {
         expandedContent={
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             <div>
-              <p className="text-xs text-muted-foreground">Last Block</p>
-              <p className="text-sm font-medium text-foreground">{networkData.blockHeight.toLocaleString()}</p>
+              <p className="text-xs text-muted-foreground">Latest Block</p>
+              <p className="text-sm font-medium text-foreground font-mono">
+                {formatValue(blockHeight?.toLocaleString())}
+              </p>
             </div>
             <div>
-              <p className="text-xs text-muted-foreground">Pending TX</p>
-              <p className="text-sm font-medium text-foreground">{networkData.pendingTx}</p>
+              <p className="text-xs text-muted-foreground">Chain ID</p>
+              <p className="text-sm font-medium text-foreground">{formatValue(chainId)}</p>
             </div>
             <div>
               <p className="text-xs text-muted-foreground">Gas Price</p>
-              <p className="text-sm font-medium text-foreground">{networkData.gasPrice}</p>
+              <p className="text-sm font-medium text-foreground">{formatValue(gasPrice)}</p>
             </div>
             <div>
-              <p className="text-xs text-muted-foreground">Current Epoch</p>
-              <p className="text-sm font-medium text-foreground">{networkData.currentEpoch}</p>
+              <p className="text-xs text-muted-foreground">Connected Peers</p>
+              <p className="text-sm font-medium text-foreground">{formatValue(peerCount)}</p>
             </div>
             <div>
-              <p className="text-xs text-muted-foreground">Total Stake</p>
-              <p className="text-sm font-medium text-foreground">{networkData.totalStake}</p>
+              <p className="text-xs text-muted-foreground">Network Status</p>
+              <p className="text-sm font-medium text-foreground">
+                {isLoading ? "Loading..." : syncing ? "Syncing" : "Synchronized"}
+              </p>
             </div>
           </div>
         }
       >
         <p className="text-sm text-muted-foreground">
-          Live network data from Hetzner production nodes
+          Live network data from RPC
         </p>
       </ExpandableCard>
 
       {/* Additional status cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <ExpandableCard
-          title="Node Information"
+          title="RPC Connection"
           icon={<Database className="h-5 w-5 text-primary" />}
-          expandLabel="View node details"
+          expandLabel="View RPC details"
           expandedContent={
             <div className="space-y-3">
               <div className="flex justify-between">
-                <span className="text-sm text-muted-foreground">Node Version:</span>
-                <span className="text-sm font-medium text-foreground">{networkData.nodeVersion}</span>
+                <span className="text-sm text-muted-foreground">Primary RPC:</span>
+                <span className="text-sm font-mono text-foreground">{RPC_CONFIG.primary}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-sm text-muted-foreground">Genesis Hash:</span>
-                <span className="text-sm font-mono text-foreground">{networkData.genesisHash.slice(0, 20)}...</span>
+                <span className="text-sm text-muted-foreground">Status:</span>
+                <StatusBadge status={blockHeight !== null ? "healthy" : "degraded"} />
               </div>
             </div>
           }
         >
           <p className="text-sm text-muted-foreground">
-            Production node information
+            Connected to Lattice Network
           </p>
         </ExpandableCard>
 
@@ -160,16 +164,16 @@ export const Overview = () => {
           expandLabel="View RPC endpoints"
           expandedContent={
             <div className="space-y-2">
-              {networkData.rpcEndpoints.map((endpoint, index) => (
-                <div key={index} className="p-2 rounded bg-background/50 border">
-                  <span className="text-sm font-mono text-foreground">{endpoint}</span>
-                </div>
+              <p className="text-xs text-muted-foreground mb-2">Available endpoints:</p>
+              <code className="text-xs bg-muted px-2 py-1 rounded block">{RPC_CONFIG.primary}</code>
+              {RPC_CONFIG.fallbacks.map((fb, i) => (
+                <code key={i} className="text-xs bg-muted px-2 py-1 rounded block">{fb}</code>
               ))}
             </div>
           }
         >
           <p className="text-sm text-muted-foreground">
-            Active RPC endpoints
+            {RPC_CONFIG.fallbacks.length + 1} endpoints configured
           </p>
         </ExpandableCard>
 
@@ -180,51 +184,18 @@ export const Overview = () => {
           expandedContent={
             <div className="space-y-3">
               <div className="flex justify-between">
-                <span className="text-sm text-muted-foreground">Indexer Status:</span>
-                <StatusBadge status="active" />
+                <span className="text-sm text-muted-foreground">RPC Status:</span>
+                <StatusBadge status={blockHeight !== null ? "healthy" : "inactive"} />
               </div>
               <div className="flex justify-between">
                 <span className="text-sm text-muted-foreground">Execution Engine:</span>
-                <StatusBadge status="active" />
+                <StatusBadge status={blockHeight !== null ? "healthy" : "inactive"} />
               </div>
             </div>
           }
         >
           <p className="text-sm text-muted-foreground">
             Core service status
-          </p>
-        </ExpandableCard>
-      </div>
-
-      {/* Recent block info */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <ExpandableCard
-          title="Recent Block"
-          icon={<Box className="h-5 w-5 text-primary" />}
-          expandLabel="View block details"
-          expandedContent={
-            <div className="space-y-3">
-              <div className="flex justify-between">
-                <span className="text-sm text-muted-foreground">Block Hash:</span>
-                <span className="text-sm font-mono text-foreground">{networkData.lastBlock.hash.slice(0, 20)}...</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-sm text-muted-foreground">Time:</span>
-                <span className="text-sm font-mono text-foreground">{new Date(networkData.lastBlock.time).toLocaleString()}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-sm text-muted-foreground">Validator:</span>
-                <span className="text-sm font-medium text-foreground">{networkData.lastBlock.validator}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-sm text-muted-foreground">TX Count:</span>
-                <span className="text-sm font-medium text-foreground">{networkData.lastBlock.txCount}</span>
-              </div>
-            </div>
-          }
-        >
-          <p className="text-sm text-muted-foreground">
-            Latest block information
           </p>
         </ExpandableCard>
       </div>
