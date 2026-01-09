@@ -163,3 +163,35 @@ validators/keys/*.key
 # CRITICAL: Production PQ keys
 validator_production_pq_key.json
 *_pq_key.json
+
+# CRITICAL: API keys and secrets
+simple_secure_rpc.go
+api_key_info.txt
+*api_key*
+*secret*
+*credential*
+
+# CRITICAL: All TLS certificates and keys
+node/p2p/tls/
+*.key
+*.pem
+*.crt
+*.cert
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.truststore
+
+# CRITICAL: All validator keys
+validators/keys/
+/validators/*/keystore/
+/validators/*/password.txt
+/validators/*/jwt.hex
+/validators/*/jwt-secret.hex
+/validators/*/enr
+/validators/*/nodekey
+/validators/*/genesis.ssz
+/validators/*/deposit_data-*.json
+/validators/*/keystore-*.json
+/validators/*/voting-keystore.json
