@@ -57,15 +57,18 @@ Deno.serve(async (req) => {
 
     // All endpoints failed
     console.error("All RPC endpoints failed");
+
+    // IMPORTANT: return 200 so the client receives a JSON-RPC error payload
+    // without the functions client treating it as a transport-level failure.
     return new Response(
       JSON.stringify({
         jsonrpc: "2.0",
-        id: body.id || 1,
-        error: { code: -32000, message: "All RPC endpoints unavailable" }
+        id: body?.id ?? 1,
+        error: { code: -32000, message: "All RPC endpoints unavailable" },
       }),
       {
-        status: 503,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        status: 200,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
       }
     );
   } catch (error) {
