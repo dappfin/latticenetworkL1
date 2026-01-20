@@ -144,7 +144,7 @@ export const Overview = () => {
             <div className="space-y-3">
               <div className="flex justify-between">
                 <span className="text-sm text-muted-foreground">Primary RPC:</span>
-                <span className="text-sm font-mono text-foreground">{RPC_CONFIG.primary}</span>
+                <span className="text-sm font-mono text-foreground">rpc.lattice.network</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-sm text-muted-foreground">Status:</span>
@@ -165,15 +165,14 @@ export const Overview = () => {
           expandedContent={
             <div className="space-y-2">
               <p className="text-xs text-muted-foreground mb-2">Available endpoints:</p>
-              <code className="text-xs bg-muted px-2 py-1 rounded block">{RPC_CONFIG.primary}</code>
-              {RPC_CONFIG.fallbacks.map((fb, i) => (
-                <code key={i} className="text-xs bg-muted px-2 py-1 rounded block">{fb}</code>
-              ))}
+              <code className="text-xs bg-muted px-2 py-1 rounded block">https://rpc.lattice.network</code>
+              <code className="text-xs bg-muted px-2 py-1 rounded block">http://77.42.84.199:8545</code>
+              <code className="text-xs bg-muted px-2 py-1 rounded block">http://157.180.81.129:8545</code>
             </div>
           }
         >
           <p className="text-sm text-muted-foreground">
-            {RPC_CONFIG.fallbacks.length + 1} endpoints configured
+            3 endpoints configured
           </p>
         </ExpandableCard>
 
