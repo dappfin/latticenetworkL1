@@ -37,6 +37,8 @@ export function useBlockchainData(refreshInterval = 12000) {
         rpcCall<string>("net_version"),
       ]);
 
+      const hasData = blockNumber !== null || chainId !== null;
+      
       setData({
         blockHeight: blockNumber ? parseInt(blockNumber, 16) : null,
         chainId: chainId ? parseInt(chainId, 16) : RPC_CONFIG.chainId,
@@ -45,14 +47,14 @@ export function useBlockchainData(refreshInterval = 12000) {
         syncing: syncing === false ? false : syncing !== null,
         networkVersion: netVersion,
         isLoading: false,
-        error: null,
+        error: hasData ? null : "RPC endpoints unreachable - servers may be offline",
         lastUpdated: new Date(),
       });
     } catch (error) {
       setData(prev => ({
         ...prev,
         isLoading: false,
-        error: error instanceof Error ? error.message : "Failed to fetch data",
+        error: "RPC endpoints unreachable - check server status",
       }));
     }
   }, []);
