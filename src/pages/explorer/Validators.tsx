@@ -141,10 +141,6 @@ export const Validators = () => {
                     <span className="font-mono">{validator.server}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-muted-foreground">IP:</span>
-                    <span className="font-mono">{validator.ip}</span>
-                  </div>
-                  <div className="flex justify-between">
                     <span className="text-muted-foreground">PQ Algorithm:</span>
                     <span className="font-mono text-purple-400">{validator.pqAlgorithm}</span>
                   </div>
